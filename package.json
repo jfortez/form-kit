@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "form-kit",
   "private": true,
   "scripts": {
     "build": "turbo run build",
