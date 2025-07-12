@@ -1,0 +1,49 @@
+{
+  "name": "@form-kit/form-kit",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit",
+    "release": "pnpm build && pnpm version patch && pnpm publish --no-git-checks --access public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "eslint": "^9.30.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.60.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.11",
+    "zod": "^4.0.5"
+  },
+  "devDependencies": {
+    "@form-kit/eslint-config": "workspace:*",
+    "@form-kit/typescript-config": "workspace:*",
+    "@storybook/react": "^9.0.16",
+    "tsup": "^8.2.2",
+    "typescript": "^5.8.3"
+  }
+}

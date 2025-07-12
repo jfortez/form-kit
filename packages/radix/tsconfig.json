@@ -1,0 +1,12 @@
+{
+  "extends": "@form-kit/typescript-config/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@form-kit/radix/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "utils/form.ts"],
+  "exclude": ["node_modules", "dist"]
+}
