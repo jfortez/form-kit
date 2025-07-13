@@ -1,5 +1,5 @@
 import BaseInputComponents from './fields';
-import { useFormComponents } from './context/form-context';
+import { useFormComponents } from './components/form-context';
 import type { Components } from './types';
 
 export type FieldType<C extends Components> = keyof (typeof BaseInputComponents & C);

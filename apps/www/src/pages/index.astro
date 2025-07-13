@@ -1,0 +1,21 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/Hero.astro';
+import Features from '@/components/Features.astro';
+import Testimonials from '@/components/Testimonials.astro';
+---
+
+<Layout title="form-kit - Build your forms faster">
+  <main>
+    <Hero />
+    <Features />
+    <Testimonials />
+    <section class="py-24 bg-gray-800 text-white text-center">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-4">Ready to get started?</h2>
+        <p class="text-lg mb-8">Start building amazing forms with form-kit today.</p>
+        <a href="/docs" class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300">Go to Documentation</a>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -2,27 +2,47 @@
   "name": "@form-kit/form-kit",
   "version": "0.0.1",
   "type": "module",
-  "description": "",
+  "description": "Build dynamic forms based on zod schema or JSON",
+  "module": "./dist/index.js",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "private": false,
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "directory": "packages/form-kit",
+    "type": "git",
+    "url": "https://github.com/jfortez/form-kit.git"
   },
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup",
+    "tailwind": "npx @tailwindcss/cli -i ./src/index.css -o ./src/globals.css --minify",
+    "build": "pnpm tailwind && tsup",
     "dev": "tsup --watch",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "release": "pnpm build && pnpm version patch && pnpm publish --no-git-checks --access public"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "forms",
+    "react-hook-form",
+    "zod",
+    "form-kit",
+    "react"
+  ],
+  "author": "jfortez",
+  "license": "MIT",
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
     "@radix-ui/react-label": "^2.1.7",
@@ -43,6 +63,7 @@
     "@form-kit/eslint-config": "workspace:*",
     "@form-kit/typescript-config": "workspace:*",
     "@storybook/react": "^9.0.16",
+    "@storybook/react-vite": "9.0.16",
     "tsup": "^8.2.2",
     "typescript": "^5.8.3"
   }

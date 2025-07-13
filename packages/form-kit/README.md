@@ -1,42 +1,42 @@
 # @form-kit/form-kit
 
-`@form-kit/form-kit` es una biblioteca de React para crear formularios dinámicos y flexibles de manera sencilla. Se integra con `react-hook-form` para la gestión del estado y `zod` para la validación de esquemas, permitiendo la generación automática de campos de formulario a partir de tu esquema de validación.
+`@form-kit/form-kit` is a React library for easily creating dynamic and flexible forms. It integrates with `react-hook-form` for state management and `zod` for schema validation, allowing for the automatic generation of form fields from your validation schema.
 
-## Características
+## Features
 
-- **Generación automática de formularios**: Crea formularios completos a partir de un esquema de `zod`.
-- **Altamente personalizable**: Permite la transformación de campos y el uso de componentes de entrada personalizados.
-- **Validación integrada**: Utiliza `zod` para una validación de esquemas robusta y sencilla.
-- **Basado en `react-hook-form`**: Aprovecha la potencia y el rendimiento de `react-hook-form`.
-- **Diseño flexible**: Organiza los campos en una cuadrícula personalizable.
+- **Automatic form generation**: Create complete forms from a `zod` schema.
+- **Highly customizable**: Allows for field transformation and the use of custom input components.
+- **Integrated validation**: Uses `zod` for robust and simple schema validation.
+- **Based on `react-hook-form`**: Leverages the power and performance of `react-hook-form`.
+- **Flexible layout**: Arrange fields in a customizable grid.
 
-## Instalación
+## Installation
 
-Para instalar el paquete, ejecuta el siguiente comando en tu terminal:
+To install the package, run the following command in your terminal:
 
 ```bash
 pnpm add @form-kit/form-kit
 ```
 
-## Uso Básico
+## Basic Usage
 
-Aquí tienes un ejemplo de cómo crear un formulario básico con `@form-kit/form-kit`.
+Here is an example of how to create a basic form with `@form-kit/form-kit`.
 
 ```tsx
 import { Form } from '@form-kit/form-kit';
 import { z } from 'zod';
 
-// 1. Define tu esquema de validación con Zod
+// 1. Define your validation schema with Zod
 const loginSchema = z.object({
-  email: z.string().email('Email inválido'),
-  password: z.string().min(8, 'La contraseña debe tener al menos 8 caracteres'),
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, 'Password must be at least 8 characters long'),
 });
 
-// 2. Crea tu componente de formulario
+// 2. Create your form component
 const LoginForm = () => {
   const handleSubmit = (data) => {
-    console.log('Datos del formulario:', data);
-    // Aquí puedes manejar la lógica de envío
+    console.log('Form data:', data);
+    // Here you can handle the submission logic
   };
 
   return (
@@ -50,27 +50,27 @@ const LoginForm = () => {
 export default LoginForm;
 ```
 
-En este ejemplo, `Form` renderizará automáticamente los campos `email` y `password` basándose en `loginSchema`.
+In this example, `Form` will automatically render the `email` and `password` fields based on `loginSchema`.
 
-## API del Componente `Form`
+## `Form` Component API
 
-El componente `Form` acepta las siguientes props:
+The `Form` component accepts the following props:
 
-| Prop              | Tipo                                       | Descripción                                                                                             |
+| Prop              | Type                                       | Description                                                                                             |
 | ----------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| `schema`          | `z.ZodObject`                              | **(Requerido)** El esquema de Zod que define la estructura y las reglas de validación del formulario.     |
-| `initialValues`   | `Partial<z.infer<Z>>`                      | Un objeto con los valores iniciales para los campos del formulario.                                     |
-| `fields`          | `Field<Z, C>[]`                            | Un array para definir manualmente los campos del formulario, permitiendo un control total sobre el orden, el tamaño y el tipo de cada campo. |
-| `fieldTransformer`| `FieldTransformer<Z, C>`                   | Una función u objeto para transformar las propiedades de los campos generados automáticamente.          |
-| `onSubmit`        | `(values: z.infer<Z>) => void`             | La función que se ejecuta cuando el formulario se envía con datos válidos.                              |
-| `onCancel`        | `() => void`                               | La función que se ejecuta cuando se hace clic en el botón "Cancelar".                                   |
-| `components`      | `Record<string, React.ComponentType<any>>` | Un objeto para registrar componentes de entrada personalizados que pueden ser utilizados en los campos. |
+| `schema`          | `z.ZodObject`                              | **(Required)** The Zod schema that defines the structure and validation rules of the form.     |
+| `initialValues`   | `Partial<z.infer<Z>>`                      | An object with the initial values for the form fields.                                     |
+| `fields`          | `Field<Z, C>[]`                            | An array to manually define the form fields, allowing full control over the order, size, and type of each field. |
+| `fieldTransformer`| `FieldTransformer<Z, C>`                   | A function or object to transform the properties of automatically generated fields.          |
+| `onSubmit`        | `(values: z.infer<Z>) => void`             | The function that is executed when the form is submitted with valid data.                              |
+| `onCancel`        | `() => void`                               | The function that is executed when the "Cancel" button is clicked.                                   |
+| `components`      | `Record<string, React.ComponentType<any>>` | An object to register custom input components that can be used in the fields. |
 
-## Personalización
+## Customization
 
-### Usando `fieldTransformer`
+### Using `fieldTransformer`
 
-Puedes personalizar los campos generados automáticamente utilizando la prop `fieldTransformer`. Esto es útil para cambiar el tipo de entrada, el tamaño en la cuadrícula, la etiqueta, etc.
+You can customize the automatically generated fields using the `fieldTransformer` prop. This is useful for changing the input type, grid size, label, etc.
 
 ```tsx
 const userSchema = z.object({
@@ -83,30 +83,30 @@ const UserForm = () => (
   <Form
     schema={userSchema}
     fieldTransformer={{
-      // Transforma el campo 'bio' para que sea un textarea
+      // Transforms the 'bio' field to be a textarea
       bio: {
-        type: 'textarea', // Asumiendo que has registrado un componente 'textarea'
+        type: 'textarea', // Assuming you have registered a 'textarea' component
       },
-      // Transforma el campo 'birthDate' para que sea un campo de fecha
+      // Transforms the 'birthDate' field to be a date field
       birthDate: {
         type: 'date',
-        label: 'Fecha de Nacimiento',
-        size: 6, // Ocupa la mitad del ancho de la fila
+        label: 'Date of Birth',
+        size: 6, // Takes up half the width of the row
       },
     }}
   />
 );
 ```
 
-### Usando Componentes Personalizados
+### Using Custom Components
 
-Puedes registrar y utilizar tus propios componentes de entrada a través de la prop `components`.
+You can register and use your own input components through the `components` prop.
 
 ```tsx
 import { Form } from '@form-kit/form-kit';
 import { z } from 'zod';
 
-// Tu componente de Textarea personalizado
+// Your custom Textarea component
 const MyTextarea = (props) => <textarea {...props} rows={4} />;
 
 const postSchema = z.object({

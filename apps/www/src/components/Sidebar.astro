@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+
+const docs = await getCollection('docs');
+
+const categories = {
+  'Introduction': docs.filter(doc => doc.slug.startsWith('get-started')),
+  'API Reference': docs.filter(doc => doc.slug.startsWith('api')),
+  // Add more categories as needed
+};
+---
+
+<aside class="w-64 flex-shrink-0 p-8 border-r border-gray-700 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto bg-background">
+  <nav>
+    {Object.entries(categories).map(([category, items]) => (
+      <div class="mb-6">
+        <h2 class="text-lg font-bold text-foreground mb-2">{category}</h2>
+        <ul>
+          {items.map(doc => (
+            <li>
+              <a href={`/docs/${doc.slug}`} class="block py-1 text-gray-400 hover:text-foreground transition-colors duration-200">
+                {doc.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </nav>
+</aside>
