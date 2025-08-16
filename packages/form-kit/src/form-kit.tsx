@@ -35,7 +35,7 @@ export const Form = <
     onSubmit,
     onCancel,
     fieldTransformer,
-    components,
+    components = {},
   } = props;
 
   const initialFormValues = useMemo<z.input<Z>>(() => {
