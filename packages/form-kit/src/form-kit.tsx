@@ -20,7 +20,7 @@ type FormProps<Z extends z.ZodObject<any>, C extends Components> = {
   components?: C;
 };
 
-export const Form = <
+export const FormKit = <
   Z extends z.ZodObject<any> = z.ZodObject<any>,
   C extends Components = NonNullable<unknown>,
 >(
@@ -104,4 +104,4 @@ export const Form = <
     </FormComponentsProvider>
   );
 };
-export default Form;
+export default FormKit;
