@@ -1,0 +1,15 @@
+{
+  "name": "@form-kit/tailwind",
+  "version": "1.0.0",
+  "description": "",
+  "exports": {
+    ".": "./index.css"
+  },
+  "keywords": [],
+  "author": "jfortez",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^4.1.11",
+    "tw-animate-css": "^1.3.5"
+  }
+}

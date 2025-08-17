@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-
+@import '@form-kit/form-kit';
 html {
   font-family: 'Inter', sans-serif;
 }

@@ -9,8 +9,6 @@ import { z } from 'zod';
 import type { Components, Field, FieldTransformer, FormSubmitHandler } from './types';
 import { generateFields, generateGrid, getDefaultValues } from '../utils/form';
 import { FormComponentsProvider } from './components/form-context';
-export type * from './types';
-import './globals.css';
 
 type FormProps<Z extends z.ZodObject<any>, C extends Components> = {
   schema: Z;
