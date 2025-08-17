@@ -1,6 +1,6 @@
 {
   "name": "@form-kit/form-kit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Build dynamic forms based on zod schema or JSON",
   "module": "./dist/index.js",
